@@ -113,11 +113,12 @@ void main()
 You can see some results in the following figures.
 
 <center>
-<img src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermal0.png" width="450">
-<img src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermal1.png" width="450">
+<img src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermal0.png" width="430">
+<img src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermal1.png" width="430">
 
-<img src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermal2.png" width="440">
-<img src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermal3.png" width="440">
+<img src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermal2.png" width="430">
+<img src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermal3.png" width="430">
+
 
 <i>The base height fields on the left and the results of three hundred thermal erosion iteration on the right</i>
 </center>
@@ -127,8 +128,9 @@ You can see some results in the following figures.
 I ran a quick benchmark to compare all the method I tried. Here are the results after 1000 iterations:
 
 <center>
-<img src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermalbench1.png" width="420">
-<img src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermalbench2.png" width="420">
+<img src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermalbench1.png" width="430">
+<img src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermalbench2.png" width="430">
+
 
 <i>On the left, a comparison between all the methods on small grid resolution. On the right, bigger resolution without the CPU version. All time are in seconds.
 I didn't try to increase the grid resolution past 1024 on CPU because it took too much time, hence the two separate graphics</i>
