@@ -7,7 +7,7 @@ category: [standard]
 ---
 I have been playing with different type of terrain erosion lately and one thing I would like to do is implementing all the things
 I do on GPU. Erosion algorithms take many iterations to converge and are very costly when done on CPU. Most of these algorithms take advantage of parallelism: many have
-been implemented on GPU, but there is not always an open source implementation. 
+been implemented on GPU, but there is not always an open source implementation. <br/>
 This is the first article of a series about terrain erosion and procedural generation. I will try to implement the things I find the most interesting, both on CPU and GPU to compare results 
 (and also because compute shaders are fun). Let's start by taking a look at the state of the art on terrain erosion.
  
