@@ -114,7 +114,7 @@ void main()
 
 You can see some results in the following figures.
 
-<img src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermalResults.png">
+<img class="axelImg" src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermalResults.png">
 
 <center>
 <i>The base height fields on the left and the results of three hundred thermal erosion iteration on the right</i>
