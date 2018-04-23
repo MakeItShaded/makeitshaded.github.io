@@ -1,7 +1,7 @@
 <ul class="author-list">
     {% for author in site.data.authors %}
         <li>
-            <a href="{{ author.site }}">
+            <a href="{{ site.author_dir | prepend: site.baseurl | replace: '//', '/' }}/{{ author.site }}">
                 {% if author.name %}
                     {{ author.name }}
                 {% else %}
