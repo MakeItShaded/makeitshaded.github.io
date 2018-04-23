@@ -121,8 +121,7 @@ You can see some results in the following figures.
 
 I ran a quick benchmark to compare all the method I tried. Here are the results after 1000 iterations:
 
-<img src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermalbench1.png" width="48%" height="50%">
-<img src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermalbench2.png" width="48%" height="50%">
+<img src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermalbench.png" width="70%">
 
 <center>
 <i>On the left, a comparison between all the methods on small grid resolution. On the right, bigger resolution without the CPU version. All time are in seconds.
