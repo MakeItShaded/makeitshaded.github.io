@@ -1,7 +1,7 @@
 ---
 author: Axel
 title: Terrain Erosion on the GPU
-featimg: thermalResults.jpg
+featimg: 1.jpg
 tags: [GPU, Terrain, Procedural, Erosion]
 category: [standard]
 ---
