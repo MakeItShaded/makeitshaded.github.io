@@ -13,7 +13,7 @@
             <div class="content">
                 <div class="content-container">
                     <article>
-<!--                         {% if page.type == "vimeo" %}
+                        {% if page.type == "vimeo" %}
                             {% if page.vimeo-embed %}
                                 <div class="video-container">
                                     {{ page.vimeo-embed }}
@@ -33,7 +33,7 @@
                             {% if page.audio-embed %}
                                 {{ page.audio-embed }}
                             {% endif %}
-                        {% endif %} -->
+                        {% endif %}
 
                         <h1 class="post-title">
                             {{ page.title }}
@@ -44,11 +44,11 @@
                                 Published on {{ page.date | date: '%B %d, %Y' }}
                             </span>
                         </div>
-<!--                         {% if page.type == "standard" %}
+                        {% if page.type == "standard" %}
                             {% if page.featimg %}
                                 <img class="featimg" src="{{ site.media_folder | prepend: site.baseurl | replace: '//', '/'}}/{{ page.featimg }}" alt="{{ page.featimg }}">
                             {% endif %}
-                        {% endif %} -->
+                        {% endif %}
                         <div class="post-content">
                             {{ content }}
                         </div>

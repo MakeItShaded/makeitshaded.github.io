@@ -1,6 +1,5 @@
 ---
 author: Axel
-layout: page-full
 title: Terrain Erosion on the GPU
 featimg: 1.jpg
 tags: [GPU, Terrain, Procedural, Erosion]
