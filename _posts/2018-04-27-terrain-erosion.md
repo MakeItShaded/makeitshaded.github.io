@@ -7,7 +7,7 @@ category: [standard]
 I have been playing with different type of terrain erosion lately and one thing I would like to do is implementing all the things
 I do on GPU. Erosion algorithms take many iterations to converge and are very costly when done on CPU. Most of these algorithms take advantage of parallelism: many have
 been implemented on GPU, but there is not always an open source implementation. 
-<br/>
+<br/> <br/>
 This is the first article of a series about terrain erosion and procedural generation. I will try to implement the things I find the most interesting, both on CPU and GPU to compare results 
 (and also because compute shaders are fun). Let's start by taking a look at the state of the art on terrain erosion.
  
@@ -17,7 +17,7 @@ There are different type of erosion:
 * Thermal Erosion: this is defined as "the erosion of ice-bearing permafrost by the combined thermal and mechanical action of moving water". It is the simplest one to implement but does not give realistic results by itself.
 * Hydraulic Erosion: simulates water flows over the terrain. There are different types of Hydraulic erosion, but all are tricky to implement. Combined with Thermal erosion, it can give realistic looking terrain.
 * Fluvial Erosion: it's the erosion of the bedrock material and its transportation downhill by streams. Usually modeled by the stream power equation as denoted by Cordonnier in 2016.
-<br/>
+<br/> <br/>
 Musgrave was the first to show some results on both Thermal and Hydraulic erosion. These algorithms were ported to the GPU by Št’ava in 2008 and Jako in 2011. You can also find a very good implementation of Hydraulic Erosion
 in Unity by [Digital-Dust](https://www.digital-dust.com/single-post/2017/03/20/Interactive-erosion-in-Unity).
 
@@ -39,12 +39,12 @@ Sometimes however we are lucky: after trying a few version of the algorithm, I f
 
 There are multiple ways to solve this problem. My first implementation used a single integer buffer to represent height data. I had to use integers because the atomicAdd function doesn't exist for floating point values. 
 This solution worked and was faster than the CPU version but could only handle erosion on large scale (amplitude > 1 meter) because of integers.
-<br/>
+<br/> <br/>
 In my next attempt I used two buffers: a floating value buffer to represent our height field data, and an integer buffer to allow the use of the [atomicAdd](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/atomicAdd.xhtml) glsl function. 
 The floating point values were handled with [intBitsToFloat](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/intBitsToFloat.xhtml) and [floatBitsToInt](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/floatBitsToInt.xhtml) functions. 
 You also have to use a barrier to make sure your return buffer is filled properly with the correct final height. This solution worked as intended and was also faster than the CPU version but slower than my previous implementation because of the two buffers. 
 The main advantage of this method is that we are no longer limited by the use of integers.
-<br/>
+<br/> <br/>
 My last idea was the one that I should have tried in the first place: simply ignore the race condition and use a single floating point value buffer to represent height data. Of course, the result will not be deterministic and 
 will contain errors but at the end, the algorithm will converge to the same results after a few hundreds more iterations. Another good thing with this version is that we don't have any visually disturbing errors. 
 The results are very similar to the other methods and this is the fastest, simplest method for now.
