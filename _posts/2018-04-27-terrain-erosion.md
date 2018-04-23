@@ -47,7 +47,7 @@ The floating point values were handled with [intBitsToFloat](https://www.khronos
 You also have to use a barrier to make sure your return buffer is filled properly with the correct final height. This solution worked as intended and was also faster than the CPU version but slower than my previous implementation because of the two buffers. 
 The main advantage of this method is that we are no longer limited by the use of integers.
 
-
+<br/>
 My last idea was the one that I should have tried in the first place: simply ignore the race condition and use a single floating point value buffer to represent height data. Of course, the result will not be deterministic and 
 will contain errors but at the end, the algorithm will converge to the same results after a few hundreds more iterations. Another good thing with this version is that we don't have any visually disturbing errors. 
 The results are very similar to the other methods and this is the fastest, simplest method for now.
