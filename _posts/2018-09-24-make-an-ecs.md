@@ -8,7 +8,7 @@ category: [Tutorial]
 
 "ECS" is an acronym you can read quite a lot, since it seems to have been the common hype about game engines for the past few years. This tutorial/article is meant to get you to understand its concepts, and get a grasp of a basic implementation to build your own.
 
-#### What **IS** an ECS?
+##### What **IS** an ECS?
 
 The acronym **ECS** stands for **E**ntity-**C**omponent **S**ystem. It is an architecture pattern mostly applied to game engines
 
@@ -42,13 +42,13 @@ That being said, converting your own OOP-based engine into an ECS should not be 
 
 Bottom line is: don't exert yourself trying to implement something you may not have any gain from if you have no good reason to do so. ***However***, if your goal is to learn, then I can't hold you back from implementing one. Break everything you want in your current architecture, start from scratch, do whatever you want with it, but I think learning should never be prevented in any way.
 
-#### Component
+##### Component
 
 This part is actually what an ECS is really about. I guess a lot of people use the acronym "ECS" to talk about this specific pattern.
 
 A _really_ good reference for this is [the article from Game Programming Patterns](http://gameprogrammingpatterns.com/component.html).
 
-#### Data locality
+##### Data locality
 
 Small explanation: a computer's CPU possesses a cache, whose size vary but still is pretty small (for example, L3 cache (largest but slowest) is ~6 MB on Intel i5s, ~8 MB on i7s, ~19 MB on AMD Ryzen 5s and ~20 MB on Ryzen 7s. This list is absolutely not entirely accurate, it may be different with each generation & model). As you can see, this cache is incredibly smaller than your amount of RAM, but is _really_ faster than it.
 
@@ -58,11 +58,11 @@ _There is no way that I can explain better than [the Game Programming Patterns' 
 
 In that way, entities are meant to be in a single memory-contiguous collection (like an std::vector in C++, std::Vec in Rust, etc). As such, CPU caching doing its job and your entire world being contained in this collection, you minimize the amount of cache misses and allow your program to process data faster.
 
-#### Update method
+##### Update method
 
 This one's the easiest: in our System base class we will define a virtual methode `update`, which will be reimplemented by the inheriting systems. This will be where all our logic is, executed for each iteration of the game loop.
 
-#### References
+##### References
 
 - [What's an Entity System? - Wikidot](http://entity-systems.wikidot.com/)
 - [Example of ECS implementation: EntityX - Alec Thomas](https://github.com/alecthomas/entityx)
