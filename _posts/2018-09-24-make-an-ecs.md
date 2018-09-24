@@ -9,12 +9,13 @@ category: [Tutorial]
 <br/>
 "ECS" is an acronym you can read quite a lot, since it seems to have been the common hype about game engines for the past few years. This tutorial/article is meant to get you to understand its concepts, and get a grasp of a basic implementation to build your own.
 
+<br/>
 ###### What **IS** an ECS?
 
 The acronym **ECS** stands for **E**ntity-**C**omponent **S**ystem. It is an architecture pattern mostly applied to game engines.
 
 <br/>
-Long story short: there is no proper definition of what an ECS actually is and, as such, there is no single way to implement it.
+Long story short: there is no proper definition of what an ECS actually is and, as such, there is no actual standard way to implement it.
 
 <br/>
 An "ECS" clearly isn't something well-defined. From what I've read about it though, I'd define the usual ECS being an implementation with:
@@ -51,8 +52,9 @@ That being said, converting your own OOP-based engine into an ECS should not be 
 ---
 
 <br/>
-Bottom line is: don't exert yourself trying to implement something you may not have any gain from if you have no good reason to do so. ***However***, if your goal is to learn, then I can't hold you back from implementing one. Break everything you want in your current architecture, start from scratch, do whatever you want with it, but I think learning should never be prevented in any way.
+Bottom line is: don't exert yourself trying to implement something you may not have any gain from, if you have no good reason to do so. ***However***, if your goal is to learn, then I can't hold you back from implementing one. Break everything you want in your current architecture, start from scratch, do whatever you want with it, but I think learning should never be prevented in any way.
 
+<br/>
 ###### Component
 
 This part is actually what an ECS is really about. I guess a lot of people use the acronym "ECS" to talk about this specific pattern.
@@ -60,9 +62,10 @@ This part is actually what an ECS is really about. I guess a lot of people use t
 <br/>
 A _really_ good reference for this is [the article from Game Programming Patterns](http://gameprogrammingpatterns.com/component.html).
 
+<br/>
 ###### Data locality
 
-Small explanation: a computer's CPU possesses a cache, whose size vary but still is pretty small (for example, L3 cache (largest but slowest) is ~6 MB on Intel i5s, ~8 MB on i7s, ~19 MB on AMD Ryzen 5s and ~20 MB on Ryzen 7s. This list is absolutely not entirely accurate, it may be different with each generation & model). As you can see, this cache is incredibly smaller than your amount of RAM, but is _really_ faster than it.
+Small explanation: a computer's CPU possesses a cache, whose size vary but still is pretty small (for example, L3 cache (the largest but the slowest compared to L2 & L1) is ~6 MB on Intel i5s, ~8 MB on i7s, ~19 MB on AMD Ryzen 5s and ~20 MB on Ryzen 7s. This list is absolutely not entirely accurate, it may be different with each generation & model). As you can see, this cache is incredibly smaller than your amount of RAM, but is _really_ faster than it.
 
 <br/>
 Nowadays, CPUs perform what we call _caching_: copying data from the RAM into the cache so that it can access it _way_ faster. However, this operation only copies data adjacent to the one you're accessing. If the data you're fetching from memory isn't in this cache slice, this causes a "cache miss" which slows down the program to pick data from the RAM. That is, your program can be executed faster if you're often selecting contiguous data.
@@ -73,10 +76,12 @@ _There is no way that I can explain better than [the Game Programming Patterns' 
 <br/>
 In that way, entities are meant to be in a single memory-contiguous collection (like an std::vector in C++, std::Vec in Rust, etc). As such, CPU caching doing its job and your entire world being contained in this collection, you minimize the amount of cache misses and allow your program to process data faster.
 
+<br/>
 ###### Update method
 
 This one's the easiest: in our System base class we will define a virtual methode `update`, which will be reimplemented by the inheriting systems. This will be where all our logic is, executed for each iteration of the game loop.
 
+<br/>
 ###### References
 
 - [What's an Entity System? - Wikidot](http://entity-systems.wikidot.com/)
