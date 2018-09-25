@@ -8,9 +8,9 @@ category: [standard]
 I have been playing with different type of terrain erosion lately and one thing I would like to do is implementing all the things
 I do on GPU. Erosion algorithms take many iterations to converge and are very costly when done on CPU. Most of these algorithms take advantage of parallelism: many have
 been implemented on GPU, but there is not always an open source implementation. <br/>
-This is the first article of a series about terrain erosion and procedural generation. I will try to implement the things I find the most interesting, both on CPU and GPU to compare results 
+This is the first article of a series about terrain erosion and procedural generation. I will try to implement the things I find the most interesting, both on CPU and GPU to compare results
 (and also because compute shaders are fun). Let's start by taking a look at the state of the art on terrain erosion.
- 
+
 ###### State of the Art
 
 There are different type of erosion:
@@ -26,30 +26,30 @@ in Unity by [Digital-Dust](https://www.digital-dust.com/single-post/2017/03/20/I
 Thermal erosion is based on the repose or talus angle of the material. The idea is to transport a certain
 amount of material in the steepest direction if the talus angle is above the threshold defined the material.
 
-This process leads to terrains with a maximum slope that will be obtained by moving matter downhill. By chance, the algorithm is easily portable to the GPU: 
+This process leads to terrains with a maximum slope that will be obtained by moving matter downhill. By chance, the algorithm is easily portable to the GPU:
 in fact, the core algorithm is almost identical to the CPU version. The difficulty resides in which buffer we use, how many we use and how much we care about race condition.
 
 ###### The race condition
 
-GPU are parallel by nature: hundreds of threads are working at the same time. Thermal erosion needs to move matter from a grid point to another and we can't know which one in advance. 
+GPU are parallel by nature: hundreds of threads are working at the same time. Thermal erosion needs to move matter from a grid point to another and we can't know which one in advance.
 Therefore, multiple threads can be adding or removing height on the same grid point. This is called a race condition and it needs to be solved in most cases.
 
 Sometimes however we are lucky: after trying a few version of the algorithm, I found that the best solution was to just not care about the race condition happening.
 
 ###### The solution(s)
 
-There are multiple ways to solve this problem. My first implementation used a single integer buffer to represent height data. I had to use integers because the atomicAdd function doesn't exist for floating point values. 
+There are multiple ways to solve this problem. My first implementation used a single integer buffer to represent height data. I had to use integers because the atomicAdd function doesn't exist for floating point values.
 This solution worked and was faster than the CPU version but could only handle erosion on large scale (amplitude > 1 meter) because of integers.
 
 <br/>
-In my next attempt I used two buffers: a floating value buffer to represent our height field data, and an integer buffer to allow the use of the [atomicAdd](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/atomicAdd.xhtml) glsl function. 
-The floating point values were handled with [intBitsToFloat](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/intBitsToFloat.xhtml) and [floatBitsToInt](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/floatBitsToInt.xhtml) functions. 
-You also have to use a barrier to make sure your return buffer is filled properly with the correct final height. This solution worked as intended and was also faster than the CPU version but slower than my previous implementation because of the two buffers. 
+In my next attempt I used two buffers: a floating value buffer to represent our height field data, and an integer buffer to allow the use of the [atomicAdd](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/atomicAdd.xhtml) glsl function.
+The floating point values were handled with [intBitsToFloat](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/intBitsToFloat.xhtml) and [floatBitsToInt](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/floatBitsToInt.xhtml) functions.
+You also have to use a barrier to make sure your return buffer is filled properly with the correct final height. This solution worked as intended and was also faster than the CPU version but slower than my previous implementation because of the two buffers.
 The main advantage of this method is that we are no longer limited by the use of integers.
 
 <br/>
-My last idea was the one that I should have tried in the first place: simply ignore the race condition and use a single floating point value buffer to represent height data. Of course, the result will not be deterministic and 
-will contain errors but at the end, the algorithm will converge to the same results after a few hundreds more iterations. Another good thing with this version is that we don't have any visually disturbing errors. 
+My last idea was the one that I should have tried in the first place: simply ignore the race condition and use a single floating point value buffer to represent height data. Of course, the result will not be deterministic and
+will contain errors but at the end, the algorithm will converge to the same results after a few hundreds more iterations. Another good thing with this version is that we don't have any visually disturbing errors.
 The results are very similar to the other methods and this is the fastest, simplest method for now.
 
 Here is a code snippet of the last method:
@@ -83,7 +83,7 @@ void main()
     uint id = gl_GlobalInvocationID.x;
     if (id >= floatingHeightBuffer.length())
         return;
-	
+
     float maxZDiff = 0;
     int neiIndex = -1;
     int i = int(id) / gridSize;
@@ -95,13 +95,13 @@ void main()
             if (Inside(i + k, j + l) == false)
                 continue;
             int index = ToIndex1D(i + k, j + l);
-            float h = floatingHeightBuffer[index]; 
+            float h = floatingHeightBuffer[index];
             float z = floatingHeightBuffer[id] - h;
             if (z > maxZDiff)
             {
                 maxZDiff = z;
                 neiIndex = index;
-            }    
+            }
         }
     }
     if (maxZDiff / cellSize > tanThresholdAngle)
@@ -133,7 +133,7 @@ I didn't try to increase the grid resolution past 1024 on CPU because it took to
 
 <br/>
 
-As expected, the single floating point buffer is the most efficient one: there is no conversion back and forth between integers and floats, and only one buffer to handle. This is an interesting solution because we compensate our 
+As expected, the single floating point buffer is the most efficient one: there is no conversion back and forth between integers and floats, and only one buffer to handle. This is an interesting solution because we compensate our
 error by increasing iteration count, which is not the most elegant but the most efficient way according to my benchmark in this case.
 
 Code is available here: [C++](https://github.com/vincentriche/Outerrain/blob/master/Outerrain/Source/gpuheightfield.cpp) and [glsl](https://github.com/vincentriche/Outerrain/blob/master/Shaders/HeightfieldThermalWeathering.glsl).
