@@ -44,7 +44,7 @@ authors:
   Razakhel:
     id:                Razakhel
     name:              Romain Milbert
-    avatar:            '/assets/images/razakhel.jpg'
+    gravatar:          6037026c1ca3ba8fcaccc30f214da703
     bio:               Master's degree student in Computer Graphics; specialized in real-time & raytraced rendering, and a bit of image analysis.
     email:             romain.milbert@gmail.com
     linkedin:          https://www.linkedin.com/in/romainmilbert/
