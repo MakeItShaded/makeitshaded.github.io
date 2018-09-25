@@ -6,3 +6,14 @@
 <link rel="stylesheet" href="{{ site.baseurl | replace: '//', '/' }}/css/main.css">
 <link rel="stylesheet" id="switch-style" href="{{ site.baseurl | replace: '//', '/' }}/css/grid.css">
 <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.baseurl | prepend: site.url | replace: '//', '/' }}/feed.xml">
+
+<!-- MathJax support -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      inlineMath: [['$','$']]
+    }
+  });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
