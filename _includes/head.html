@@ -36,7 +36,6 @@
   {% if page.date %}
     <meta property="article:modified_time" content="{% if page.last_modified_at %}{{ page.last_modified_at | date_to_xmlschema }}{% else %}{{ page.date | date_to_xmlschema }}{% endif %}">
     <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
-    <meta property="article:author" content="https://www.facebook.com/{{ site.author.facebook }}">
     {% for post in site.related_posts limit:3 %}
       <meta property="og:see_also" content="{{ post.url | replace:'index.html','' | prepend: site.url }}">
     {% endfor %}
