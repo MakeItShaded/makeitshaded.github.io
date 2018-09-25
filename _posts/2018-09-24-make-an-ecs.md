@@ -5,6 +5,7 @@ title: Make your own ECS (Entity-Component System)
 image:
   feature: ECS_shapes.jpg
   topPosition: -50px
+syntaxHighlighter: yes
 tags: [C++, ECS, Game engine, Architecture]
 category: [Tutorial]
 ---

@@ -5,6 +5,7 @@ title: Terrain Erosion on the GPU
 image:
   feature: 1.jpg
   topPosition: -50px
+syntaxHighlighter: yes
 tags: [GPU, Terrain, Procedural, Erosion]
 category: [standard]
 ---
