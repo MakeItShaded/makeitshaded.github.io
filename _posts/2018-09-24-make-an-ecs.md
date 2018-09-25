@@ -1,4 +1,5 @@
 ---
+layout: post
 author: Razakhel
 title: Make your own ECS (Entity-Component System)
 featimg: ECS_shapes.jpg

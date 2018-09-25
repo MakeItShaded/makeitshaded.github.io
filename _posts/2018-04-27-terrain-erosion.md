@@ -1,4 +1,5 @@
 ---
+layout: post
 author: Axel
 title: Terrain Erosion on the GPU
 featimg: 1.jpg
