@@ -3,13 +3,16 @@
 markdown:            redcarpet
 highlighter:         pygments
 
+# Permalinks
+permalink:           /:title/
+
 # Setup
 timezone:            Europe/Paris # eg. Asia/Kathmandu
 locale:              fr_FR # eg. en_us
 name:				         Make it Shaded
 title:               Make it Shaded
-tagline:             'tagline'
-description:         'description'
+tagline:
+description:         Make it Shaded
 url:
 rss:
 baseurl:             '/'
