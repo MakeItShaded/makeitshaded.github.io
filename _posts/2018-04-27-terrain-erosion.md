@@ -2,7 +2,9 @@
 layout: post
 author: Axel
 title: Terrain Erosion on the GPU
-featimg: 1.jpg
+image:
+  feature: 1.jpg
+  topPosition: -50px
 tags: [GPU, Terrain, Procedural, Erosion]
 category: [standard]
 ---

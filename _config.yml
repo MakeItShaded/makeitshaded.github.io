@@ -25,7 +25,7 @@ disqus:               # get it on https://disqus.com/admin/
 author:
   id:                Axel
   name:              Axel Paris
-  avatar:            /axel.jpg
+  avatar:            /assets/images/axel.jpg
   twitter:           https://twitter.com/Axel_Paris
   email:             axel.paris69@gmail.com
   site:              moon519.github.io/index.html
@@ -33,14 +33,14 @@ author:
 author:
   id:                hrkz
   name:              Hugo Frezat
-  avatar:            /hrkz.jpg
+  avatar:            /assets/images/hrkz.jpg
   bio:               Physics enthusiast & student in applied maths/computer science.
   twitter:           https://twitter.com/hrkz____
 
 author:
   id:                Razakhel
   name:              Romain Milbert
-  avatar:            /razakhel.jpg
+  avatar:            /assets/images/razakhel.jpg
   bio:               Master's degree student in Computer Graphics; specialized in real-time & raytraced rendering, and a bit of image analysis.
   email:             romain.milbert@gmail.com
   linkedin:          https://www.linkedin.com/in/romainmilbert/
