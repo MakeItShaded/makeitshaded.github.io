@@ -23,28 +23,32 @@ baseurl_javascripts: '/assets/javascripts/'
 icon:                 # /assets/img/icon.png [best 300px X 300px]
 disqus:               # get it on https://disqus.com/admin/
 
-author:
-  id:                Axel
-  name:              Axel Paris
-  avatar:            '/assets/images/axel.jpg'
-  twitter:           https://twitter.com/Axel_Paris
-  email:             axel.paris69@gmail.com
-  site:              moon519.github.io/index.html
+authors:
+  Axel:
+    id:                Axel
+    name:              Axel Paris
+    avatar:            '/assets/images/axel.jpg'
+    twitter:           https://twitter.com/Axel_Paris
+    email:             axel.paris69@gmail.com
+    github:            Moon519
+    site:              moon519.github.io/index.html
 
-author:
-  id:                hrkz
-  name:              Hugo Frezat
-  avatar:            '/assets/images/hrkz.jpg'
-  bio:               Physics enthusiast & student in applied maths/computer science.
-  twitter:           https://twitter.com/hrkz____
+  hrkz:
+    id:                hrkz
+    name:              Hugo Frezat
+    avatar:            '/assets/images/hrkz.jpg'
+    bio:               Physics enthusiast & student in applied maths/computer science.
+    twitter:           https://twitter.com/hrkz____
+    github:            hrkz
 
-author:
-  id:                Razakhel
-  name:              Romain Milbert
-  avatar:            '/assets/images/razakhel.jpg'
-  bio:               Master's degree student in Computer Graphics; specialized in real-time & raytraced rendering, and a bit of image analysis.
-  email:             romain.milbert@gmail.com
-  linkedin:          https://www.linkedin.com/in/romainmilbert/
+  Razakhel:
+    id:                Razakhel
+    name:              Romain Milbert
+    avatar:            '/assets/images/razakhel.jpg'
+    bio:               Master's degree student in Computer Graphics; specialized in real-time & raytraced rendering, and a bit of image analysis.
+    email:             romain.milbert@gmail.com
+    linkedin:          https://www.linkedin.com/in/romainmilbert/
+    github:            Razakhel
 
 # Server
 destination:      	 ./_site
