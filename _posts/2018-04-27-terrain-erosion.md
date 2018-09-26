@@ -53,7 +53,7 @@ The results are very similar to the other methods and this is the fastest, simpl
 
 Here is a code snippet of the last method:
 
-~~~ cpp
+``` cpp
 layout(binding = 0, std430) coherent buffer HeightfieldDataFloat
 {
     float floatingHeightBuffer[];
@@ -109,7 +109,7 @@ void main()
         floatingHeightBuffer[neiIndex] = floatingHeightBuffer[neiIndex] + amplitude;
     }
 }
-~~~
+```
 
 You can see some results in the following figures.
 
