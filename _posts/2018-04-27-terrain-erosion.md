@@ -116,7 +116,7 @@ void main()
 
 You can see some results in the following figures.
 
-<img class="axelImg img img--fullContainer img--10xLeading" src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermal_erosion/thermalResults.png">
+<img class="img img--fullContainer img--10xLeading" src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermal_erosion/thermalResults.png">
 
 <center>
 <i>The base height fields on the left and the results of three hundred thermal erosion iteration on the right</i>
@@ -126,7 +126,7 @@ You can see some results in the following figures.
 
 I ran a quick benchmark to compare all the method I tried. Here are the results after 1000 iterations:
 
-<img class="axelImg img img--fullContainer img--10xLeading" src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermal_erosion/thermalbench.png">
+<img class="img img--fullContainer img--10xLeading" src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermal_erosion/thermalbench.png">
 
 <center>
 <i>On the left, a comparison between all the methods on small grid resolution. On the right, bigger resolution without the CPU version. All time are in seconds.
