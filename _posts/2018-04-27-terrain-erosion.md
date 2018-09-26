@@ -11,7 +11,8 @@ category: [standard]
 ---
 I have been playing with different type of terrain erosion lately and one thing I would like to do is implementing all the things
 I do on GPU. Erosion algorithms take many iterations to converge and are very costly when done on CPU. Most of these algorithms take advantage of parallelism: many have
-been implemented on GPU, but there is not always an open source implementation. <br/>
+been implemented on GPU, but there is not always an open source implementation.
+
 This is the first article of a series about terrain erosion and procedural generation. I will try to implement the things I find the most interesting, both on CPU and GPU to compare results
 (and also because compute shaders are fun). Let's start by taking a look at the state of the art on terrain erosion.
 
@@ -116,24 +117,22 @@ void main()
 
 You can see some results in the following figures.
 
-<img class="img img--fullContainer img--10xLeading" src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermal_erosion/thermalResults.png">
+<img class="img img--fullContainer img--8xLeading" src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermal_erosion/thermalResults.png">
 
 <center>
-<i>The base height fields on the left and the results of three hundred thermal erosion iteration on the right</i>
+<i>The base height fields on the left and the results of three hundred thermal erosion iteration on the right.</i>
 </center>
 
 #### Results
 
 I ran a quick benchmark to compare all the method I tried. Here are the results after 1000 iterations:
 
-<img class="img img--fullContainer img--10xLeading" src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermal_erosion/thermalbench.png">
+<img class="img img--fullContainer img--8xLeading" src="https://raw.githubusercontent.com/Moon519/moon519.github.io/master/images/thermal_erosion/thermalbench.png">
 
 <center>
 <i>On the left, a comparison between all the methods on small grid resolution. On the right, bigger resolution without the CPU version. All time are in seconds.
-I didn't try to increase the grid resolution past 1024 on CPU because it took too much time, hence the two separate graphics</i>
+I didn't try to increase the grid resolution past 1024 on CPU because it took too much time, hence the two separate graphics.</i>
 </center>
-
-<br/>
 
 As expected, the single floating point buffer is the most efficient one: there is no conversion back and forth between integers and floats, and only one buffer to handle. This is an interesting solution because we compensate our
 error by increasing iteration count, which is not the most elegant but the most efficient way according to my benchmark in this case.
