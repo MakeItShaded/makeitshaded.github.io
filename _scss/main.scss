@@ -1,5 +1,6 @@
 // Reset
 @import "normalize";
+@import "highlights";
 
 // Variables and mixins
 @import "variables";
@@ -27,5 +28,3 @@
 // Utility classes
 @import "utilities";
 @import "responsive-utilities";
-
-@import "highlights";
