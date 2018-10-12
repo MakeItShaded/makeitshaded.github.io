@@ -2,10 +2,12 @@
  <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
  <g>
   <title>background</title>
-  <rect fill="#6b6b6b" id="canvas_background" height="102" width="747" y="-1" x="-1"/>
+  <rect fill="#272727" id="canvas_background" height="102" width="747" y="-1" x="-1"/>
  </g>
  <g>
   <title>Layer 1</title>
+  <rect id="svg_3" height="1" width="23" y="-159.5625" x="-343" stroke-width="1.5" stroke="#000" fill="#ffffff"/>
+  <rect id="svg_4" height="1" width="1" y="-26.5625" x="-305" stroke-width="1.5" stroke="#000" fill="#ffffff"/>
   <text font-style="italic" stroke="#000" transform="matrix(3.6009288050920585,0,0,3.797319822373918,-159.91968771973322,-21.870911656752778) " font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_1" y="25.9375" x="46" stroke-width="0" fill="#ffffff">Make It Shaded</text>
  </g>
 </svg>
