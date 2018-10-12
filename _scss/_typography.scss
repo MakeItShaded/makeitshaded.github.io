@@ -22,16 +22,11 @@ $font-XXL:           3.157rem;
 $font-XXXL:          4.209rem;
 $font-XXXXL:         5.61rem;
 
-// Font type
-$body-primary-font: 'Source Serif Pro', serif;
-$title-primary-font: 'PT Sans', sans-serif;
-$title-secondary-font: 'Roboto', sans-serif;
-
 /* Setup */
 
 html {
   /* Change default typefaces here */
-  font-family: $body-primary-font;
+  font-family: serif;
   font-size: $baseFontSize / 16 * 100%; // 14px
   font-weight: 400;
   color: $text-color;
@@ -120,7 +115,7 @@ h4,
 h5,
 h6 {
   /* Change heading typefaces here */
-  font-family: $title-primary-font;
+  font-family: sans-serif;
   margin-top: $leading;
   margin-bottom: 0;
   line-height: $leading;
@@ -132,7 +127,7 @@ h1 {
   margin-top: 2 * $leading;
 }
 h2 {
-  font-family: $title-secondary-font;
+  font-family: sans-serif;
   font-size: 2 * $scale * 1rem;
   line-height: 2 * $leading;
   margin-top: 2 * $leading;
