@@ -46,13 +46,43 @@ That being said, converting your own OOP-based engine into an ECS should not be 
 
 Bottom line is: don't exert yourself trying to implement something you may not have any gain from, if you have no good reason to do so. ***However***, if your goal is to learn, then I can't hold you back from implementing one. Break everything you want in your current architecture, start from scratch, do whatever you want with it, but I think learning should never be prevented in any way.
 
-#### Component
+#### The Entity-Component System
 
-This part is actually what an ECS is really about. I guess a lot of people use the acronym "ECS" to talk about this specific pattern.
+##### Components
 
-A _really_ good reference for this is [the article from Game Programming Patterns](http://gameprogrammingpatterns.com/component.html).
+This part is actually what an ECS is really about. I guess a lot of people use the acronym "ECS" to talk about this specific pattern. A _really_ good reference for this is [the article from Game Programming Patterns](http://gameprogrammingpatterns.com/component.html).
 
-#### Data locality
+To explain what the components are all about, let's start with a basic and naive inheritance implementation example.
+
+First of all, let's assume you have a Mesh class. I won't explain its inner structure, so let's just say it contains data to represent a 3D mesh.
+
+Now, a Mesh is supposed to be moved around the scene, right? You could then create another class, named for example 'Model', which will contain a Mesh and inherit from Transform, your class made to handle movements. This works fine, your mesh is moved into the scene through your Model instance.
+
+Now, you want to add collisions to it with your physics system. You could do that by creating two other classes:
+- Create a 'CollidableMesh' to have a **static** collidable mesh, containing a Mesh and inheriting from Collidable.
+- Create a 'CollidableModel' to have a **movable** collidable mesh, inheriting from Collidable & Model.
+
+![Inheritance spaghetti](inheritance_spaghetti.jpg)
+
+This is just a starting example, but it seems pretty clear where it is going. In the end, you will have a ton of links between your classes, combining them every way you deem useful. It will be enough if you keep your engine simple, but in the long run this is _not_ maintainable **at all**.
+
+This is where the Component pattern jumps in: it is meant to favorize composition over inheritance. This means that, instead of having multiple classes inheriting from some others, we simply have a basic class _containing_ components, which define the object's behavior.
+
+The purpose of having components might not be clear now, so let's see the 'E' part of our ECS implementation: entities.
+
+##### Entities
+
+_Writing in progress._
+
+##### Systems
+
+_Writing in progress._
+
+#### Update method
+
+This one's the easiest: in our System base class we will define a virtual methode `update()`, which will be reimplemented by the inheriting systems. This will be where all our logic is, executed for each iteration of the game loop.
+
+#### Optimization: data locality
 
 Small explanation: a computer's CPU possesses a cache, whose size vary but still is pretty small (for example, L3 cache (the largest but the slowest compared to L2 & L1) is ~6 MB on Intel i5s, ~8 MB on i7s, ~19 MB on AMD Ryzen 5s and ~20 MB on Ryzen 7s. This list is absolutely not entirely accurate, it may be different with each generation & model). As you can see, this cache is incredibly smaller than your amount of RAM, but is _really_ faster than it.
 
@@ -61,10 +91,6 @@ Nowadays, CPUs perform what we call _caching_: copying data from the RAM into th
 _There is no way that I can explain better than [the Game Programming Patterns' article on this](http://gameprogrammingpatterns.com/data-locality.html), so I'll let you read it if you didn't understand._
 
 In that way, entities are meant to be in a single memory-contiguous collection (like an std::vector in C++, std::Vec in Rust, etc). As such, CPU caching doing its job and your entire world being contained in this collection, you minimize the amount of cache misses and allow your program to process data faster.
-
-#### Update method
-
-This one's the easiest: in our System base class we will define a virtual methode `update`, which will be reimplemented by the inheriting systems. This will be where all our logic is, executed for each iteration of the game loop.
 
 #### References
 
