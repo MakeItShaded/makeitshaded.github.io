@@ -1,42 +1,55 @@
 
 # Syntax highlighting
-markdown:            redcarpet
-highlighter:         pygments
+markdown:             kramdown
+mathjax:              true
+highlighter:          rouge
 
 # Permalinks
-permalink:           /:title
-relative_permalinks: true
+permalink:           /:title/
 
 # Setup
-timezone:            your timezone # eg. Asia/Kathmandu
-locale:              your locale language # eg. en_us
-name:				         site name
-title:               site title
-tagline:             'tagline'
-description:         'description'
-url:                 site url
-rss:                 rss feed url
+timezone:            Europe/Paris # eg. Asia/Kathmandu
+locale:              fr_FR # eg. en_us
+name:                Make it Shaded
+title:               Make it Shaded
+tagline:
+description:         Make it Shaded
+url:
+rss:
 baseurl:             '/'
 baseurl_posts_img:   '/assets/images/posts/'
 baseurl_featured_img: '/assets/images/hero/'
 baseurl_featured_thumbnail: '/assets/images/thumbnail/'
 baseurl_javascripts: '/assets/javascripts/'
-icon:                your site icon path # /assets/img/icon.png [best 300px X 300px]
-disqus:              disqus_shortname # get it on https://disqus.com/admin/
+icon:                 # /assets/img/icon.png [best 300px X 300px]
+disqus:               # get it on https://disqus.com/admin/
 
-author:
-  name:           	 your name
-  url:            	 your site url
-  facebook:          username
-  twitter:           username
-  google_plus:       username
-  linkedin:          username
-  dribbble:          username
-  pinterest:         username
-  kiva:              username
+authors:
+  Axel:
+    id:                Axel
+    name:              Axel Paris
+    avatar:            '/assets/images/axel.jpg'
+    twitter:           https://twitter.com/Axel_Paris
+    email:             axel.paris69@gmail.com
+    github:            Moon519
+    site:              moon519.github.io/index.html
 
-fb_admins:           your facebook profile id
-fb_appid:            your facebook app id
+  hrkz:
+    id:                hrkz
+    name:              Hugo Frezat
+    avatar:            '/assets/images/hrkz.jpg'
+    bio:               Physics enthusiast & student in applied maths/computer science.
+    twitter:           https://twitter.com/hrkz____
+    github:            hrkz
+
+  Razakhel:
+    id:                Razakhel
+    name:              Romain Milbert
+    gravatar:          6037026c1ca3ba8fcaccc30f214da703
+    bio:               Master's degree student in Computer Graphics; specialized in real-time & raytraced rendering, and a bit of image analysis.
+    email:             romain.milbert@gmail.com
+    linkedin:          https://www.linkedin.com/in/romainmilbert/
+    github:            Razakhel
 
 # Server
 destination:      	 ./_site
