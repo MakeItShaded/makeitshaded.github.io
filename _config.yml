@@ -1,6 +1,7 @@
 
 # Syntax highlighting
 markdown:             kramdown
+mathjax: 			  true
 highlighter:          rouge
 
 # Permalinks

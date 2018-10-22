@@ -9,6 +9,12 @@ syntaxHighlighter: yes
 tags: [GPU, Terrain, Procedural, Erosion]
 category: [standard]
 ---
+
+
+When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
+$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+
+
 I have been playing with different type of terrain erosion lately and one thing I would like to do is implementing all the things
 I do on GPU. Erosion algorithms take many iterations to converge and are very costly when done on CPU. Most of these algorithms take advantage of parallelism: many have
 been implemented on GPU, but there is not always an open source implementation.
