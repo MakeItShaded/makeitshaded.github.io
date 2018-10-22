@@ -32,7 +32,7 @@ layout: default
               </time>
             </li>
             <li class="postMeta-author">
-              By {{ site.authors[page.author].name }}
+              By {{ site.author.name }}
             </li>
             <li class="postMeta-tags">
               {{ page.categories }}
@@ -55,6 +55,7 @@ layout: default
     <hr/>
     <div class="container container--content">
       <div class="content-body">
+        {% include subscribe.html %}
         {% include comments.html %}
       </div>
     </div>

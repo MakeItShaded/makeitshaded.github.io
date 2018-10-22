@@ -52,6 +52,15 @@ _______________________________________________________________________________
 
 GRAPHIC ASSETS
 
+Roboto (font)
+https://www.google.com/fonts/specimen/Roboto
+
+PT Sans (font)
+https://www.google.com/fonts/specimen/PT+Sans
+
+Source Serif Pro (font)
+https://www.google.com/fonts/specimen/Source+Serif+Pro
+
 Entypo (icons)
 http://www.entypo.com/
 
